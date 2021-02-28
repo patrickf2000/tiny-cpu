@@ -5,6 +5,7 @@ use IEEE.numeric_std.all;
 entity registers is
     port(
         clk     : in std_logic;                           -- Clock
+        enable  : in std_logic;                           -- The enable bit
         sel_A   : in std_logic_vector(2 downto 0);        -- Source 1
         sel_B   : in std_logic_vector(2 downto 0);        -- Source 2
         sel_D   : in std_logic_vector(2 downto 0);        -- The destination register
@@ -26,23 +27,25 @@ architecture Behavior of registers is
 begin
     process (clk)
     begin
-        O_dataA <= regs(to_integer(unsigned(sel_A)));
-        O_dataB <= regs(to_integer(unsigned(sel_B)));
-        O_dataD <= regs(to_integer(unsigned(sel_D)));
-        
-        -- If enabled, write to register A
-        if I_enA = '1' then
-            regs(to_integer(unsigned(sel_A))) <= I_dataA;
-        end if;
-        
-        -- If enabled, write to register B
-        if I_enB = '1' then
-            regs(to_integer(unsigned(sel_B))) <= I_dataB;
-        end if;
-        
-        -- If enabled, write to register D
-        if I_enD = '1' then
-            regs(to_integer(unsigned(sel_D))) <= I_dataD;
+        if enable = '1' then
+            O_dataA <= regs(to_integer(unsigned(sel_A)));
+            O_dataB <= regs(to_integer(unsigned(sel_B)));
+            O_dataD <= regs(to_integer(unsigned(sel_D)));
+            
+            -- If enabled, write to register A
+            if I_enA = '1' then
+                regs(to_integer(unsigned(sel_A))) <= I_dataA;
+            end if;
+            
+            -- If enabled, write to register B
+            if I_enB = '1' then
+                regs(to_integer(unsigned(sel_B))) <= I_dataB;
+            end if;
+            
+            -- If enabled, write to register D
+            if I_enD = '1' then
+                regs(to_integer(unsigned(sel_D))) <= I_dataD;
+            end if;
         end if;
     end process;
 end Behavior;

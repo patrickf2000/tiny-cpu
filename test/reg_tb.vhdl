@@ -11,6 +11,7 @@ architecture Behavior of reg_tb is
     component registers is
         port(
             clk     : in std_logic;
+            enable  : in std_logic;
             sel_A   : in std_logic_vector(2 downto 0);
             sel_B   : in std_logic_vector(2 downto 0);
             sel_D   : in std_logic_vector(2 downto 0);
@@ -28,6 +29,7 @@ architecture Behavior of reg_tb is
     
     -- Declare the signals
     signal clk : std_logic := '0';
+    signal enable : std_logic := '1';
     signal I_enA, I_enB, I_enD : std_logic := '0';
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal O_dataA, O_dataB, O_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
@@ -40,6 +42,7 @@ begin
     -- Init the UUT (the registers to be tested)
     uut : registers port map (
         clk => clk,
+        enable => enable,
         sel_A => sel_A,
         sel_B => sel_B,
         sel_D => sel_D,

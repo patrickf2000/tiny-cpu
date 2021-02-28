@@ -11,6 +11,7 @@ architecture Behavior of decoder_tb is
     component decoder is
         port (
             clk     : in std_logic;                         -- The clock
+            enable  : in std_logic;                         -- The enable bit
             instr   : in std_logic_vector(15 downto 0);     -- The input data to decode
             opcode  : out std_logic_vector(3 downto 0);     -- The opcode
             funct   : out std_logic_vector(2 downto 0);     -- The function code (for ALU and branch)
@@ -24,6 +25,7 @@ architecture Behavior of decoder_tb is
 
     -- Declare the signals
     signal clk : std_logic := '0';
+    signal enable : std_logic := '1';
     signal instr : std_logic_vector(15 downto 0) := X"0000";
     signal opcode : std_logic_vector(3 downto 0) := X"0";
     signal funct, regA, regB, regD : std_logic_vector(2 downto 0) := "000";
@@ -36,6 +38,7 @@ begin
     -- Setup the component
     uut : decoder port map (
         clk => clk,
+        enable => enable,
         instr => instr,
         opcode => opcode,
         funct => funct,

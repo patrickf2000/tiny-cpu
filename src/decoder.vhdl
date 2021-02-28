@@ -6,6 +6,7 @@ use IEEE.numeric_std.all;
 entity Decoder is
     port (
         clk     : in std_logic;                         -- The clock
+        enable  : in std_logic;                         -- The enable bit
         instr   : in std_logic_vector(15 downto 0);     -- The input data to decode
         opcode  : out std_logic_vector(3 downto 0);     -- The opcode
         funct   : out std_logic_vector(2 downto 0);     -- The function code (for ALU and branch)
@@ -23,16 +24,18 @@ architecture Behavior of Decoder is
 begin
     process (clk)
     begin
-        -- These will always be present
-        opcode <= instr(15 downto 12);
-        funct <= instr(11 downto 9);
-        regD <= instr(8 downto 6);
-        
-        -- All this may or may not be present, depending on the instruction
-        regB <= instr(5 downto 3);
-        regA <= instr(2 downto 0);
-        addr <= instr(5 downto 0);
-        imm <= instr(5 downto 0);
+        if enable = '1' then
+            -- These will always be present
+            opcode <= instr(15 downto 12);
+            funct <= instr(11 downto 9);
+            regD <= instr(8 downto 6);
+            
+            -- All this may or may not be present, depending on the instruction
+            regB <= instr(5 downto 3);
+            regA <= instr(2 downto 0);
+            addr <= instr(5 downto 0);
+            imm <= instr(5 downto 0);
+        end if;
     end process;
 end Behavior;
 
