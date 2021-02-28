@@ -70,15 +70,32 @@ begin
         instr <= "0101000000001010";
         wait for clk_period;
         
+        assert opcode = "0101"  report "Test 1 failed-> opcode" severity error;
+        assert funct = "000"    report "Test 1 failed-> funct" severity error;
+        assert regD = "000"     report "Test 1 failed-> regD" severity error;
+        assert regB = "001"     report "Test 1 failed-> regB" severity error;
+        assert regA = "010"     report "Test 1 failed-> regA" severity error;
+        
         -- sub r0, r6, r1
         -- Encoding: 0101 001 000 101 001
         instr <= "0101001000101001";
         wait for clk_period;
         
+        assert opcode = "0101"  report "Test 2 failed-> opcode" severity error;
+        assert funct = "001"    report "Test 2 failed-> funct" severity error;
+        assert regD = "000"     report "Test 2 failed-> regD" severity error;
+        assert regB = "101"     report "Test 2 failed-> regB" severity error;
+        assert regA = "001"     report "Test 2 failed-> regA" severity error;
+        
         -- li r3, 12
         -- Encoding 0100 000 011 001100
         instr <= "0100000011001100";
         wait for clk_period;
+        
+        assert opcode = "0100"  report "Test 3 failed-> opcode" severity error;
+        assert funct = "000"    report "Test 3 failed-> funct" severity error;
+        assert regD = "011"     report "Test 3 failed-> regD" severity error;
+        assert imm = "001100"   report "Test 3 failed-> imm" severity error;
         
         wait;
         
