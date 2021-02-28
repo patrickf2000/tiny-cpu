@@ -21,14 +21,16 @@ compile:
 	mkdir -p sim
 	ghdl -a $(GHDL_FLAGS) $(GHDL_WORKDIR) $(FILES)
 	ghdl -a $(GHDL_FLAGS) $(GHDL_WORKDIR) $(SIMFILES)
-	ghdl -e $(GHDL_FLAGS) $(GHDL_WORKDIR) reg_tb
-	ghdl -e $(GHDL_FLAGS) $(GHDL_WORKDIR) decoder_tb
-	ghdl -e $(GHDL_FLAGS) $(GHDL_WORKDIR) control_tb1
+	ghdl -e -o sim/reg_tb $(GHDL_FLAGS) $(GHDL_WORKDIR) reg_tb
+	ghdl -e -o sim/decoder_tb $(GHDL_FLAGS) $(GHDL_WORKDIR) decoder_tb
+	ghdl -e -o sim/control_tb1 $(GHDL_FLAGS) $(GHDL_WORKDIR) control_tb1
 
 run:
-	ghdl -r $(GHDL_FLAGS) $(GHDL_WORKDIR) reg_tb $(GHDL_STOP) --wave=sim/wave.ghw
-	ghdl -r $(GHDL_FLAGS) $(GHDL_WORKDIR) decoder_tb $(GHDL_STOP) --wave=sim/decoder_wave.ghw
-	ghdl -r $(GHDL_FLAGS) $(GHDL_WORKDIR) control_tb1 $(GHDL_STOP) --wave=sim/control_tb1.ghw
+	cd sim; \
+	ghdl -r $(GHDL_FLAGS) reg_tb $(GHDL_STOP) --wave=wave.ghw; \
+	ghdl -r $(GHDL_FLAGS) decoder_tb $(GHDL_STOP) --wave=decoder_wave.ghw; \
+	ghdl -r $(GHDL_FLAGS) control_tb1 $(GHDL_STOP) --wave=control_tb1.ghw; \
+	cd ..
 
 view:
 	gtkwave sim/wave.ghw
