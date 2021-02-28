@@ -1,7 +1,7 @@
 # The files
-FILES		= src/registers.vhdl
+FILES		= src/registers.vhdl src/decoder.vhdl
 SIMDIR		= sim
-SIMFILES	= test/reg_tb.vhdl
+SIMFILES	= test/reg_tb.vhdl test/decoder_tb.vhdl
 
 # GHDL
 GHDL_CMD	= ghdl
@@ -22,9 +22,11 @@ compile:
 	ghdl -a $(GHDL_FLAGS) $(GHDL_WORKDIR) $(FILES)
 	ghdl -a $(GHDL_FLAGS) $(GHDL_WORKDIR) $(SIMFILES)
 	ghdl -e $(GHDL_FLAGS) $(GHDL_WORKDIR) reg_tb
+	ghdl -e $(GHDL_FLAGS) $(GHDL_WORKDIR) decoder_tb
 
 run:
 	ghdl -r $(GHDL_FLAGS) $(GHDL_WORKDIR) reg_tb $(GHDL_STOP) --wave=sim/wave.ghw
+	ghdl -r $(GHDL_FLAGS) $(GHDL_WORKDIR) decoder_tb $(GHDL_STOP) --wave=sim/decoder_wave.ghw
 
 view:
 	gtkwave sim/wave.ghw
