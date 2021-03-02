@@ -16,9 +16,7 @@ architecture Behavior of reg_tb is
             sel_B   : in std_logic_vector(2 downto 0);
             sel_D   : in std_logic_vector(2 downto 0);
             I_dataA : in std_logic_vector(15 downto 0);
-            I_enA   : in std_logic;
             I_dataB : in std_logic_vector(15 downto 0);
-            I_enB   : in std_logic;
             I_dataD : in std_logic_vector (15 downto 0);
             I_enD   : in std_logic;
             O_dataD : out std_logic_vector(15 downto 0);
@@ -30,7 +28,7 @@ architecture Behavior of reg_tb is
     -- Declare the signals
     signal clk : std_logic := '0';
     signal enable : std_logic := '1';
-    signal I_enA, I_enB, I_enD : std_logic := '0';
+    signal I_enD : std_logic := '0';
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal O_dataA, O_dataB, O_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal sel_A, sel_B, sel_D : std_logic_vector(2 downto 0) := "000";
@@ -52,8 +50,6 @@ begin
         O_dataA => O_dataA,
         O_dataB => O_dataB,
         O_dataD => O_dataD,
-        I_enA => I_enA,
-        I_enB => I_enB,
         I_enD => I_enD
     );
  
@@ -83,8 +79,6 @@ begin
         I_dataA <= X"AB11";
         I_dataB <= X"AB22";
         I_dataD <= X"AB33";
-        I_enA <= '1';
-        I_enB <= '1';
         I_enD <= '1';
         wait for clk_period;
         
@@ -93,8 +87,6 @@ begin
         I_dataA <= X"0000";
         I_dataB <= X"0000";
         I_dataD <= X"0000";
-        I_enA <= '0';
-        I_enB <= '0';
         I_enD <= '0';
         wait for clk_period;
         
@@ -110,12 +102,7 @@ begin
         sel_D <= "010";
         wait for clk_period;
         
-        -- Now raise the enable bit for A. This should clear it
-        I_enA <= '1';
-        wait for clk_period;
-        
         -- Now raise for the other two. This should also clear
-        I_enB <= '1';
         I_enD <= '1';
         wait for clk_period;
 

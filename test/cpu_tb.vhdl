@@ -42,9 +42,11 @@ begin
         -- Our instructions
         type mem is array (0 to 2) of std_logic_vector(15 downto 0);
         variable mem_seg : mem := (
-            "0101000000001010",     -- add r0, r1, r2
+            --"0101000000001010",     -- add r0, r1, r2
+            --"0101001000101011"      -- sub r0, r6, r3
             "0100000011001100",     -- li r3, 12
-            "0101001000101011"      -- sub r0, r6, r3
+            "0100000000000001",     -- li r0, 1
+            "0100000010000100"      -- li r2, 4
         );
     begin
         -- hold reset state for 100 ns.

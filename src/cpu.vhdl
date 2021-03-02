@@ -40,7 +40,7 @@ architecture Behavior of CPU is
             enable                      : in std_logic;
             sel_D, sel_B, sel_A         : in std_logic_vector(2 downto 0);
             I_dataD, I_dataB, I_dataA   : in std_logic_vector(15 downto 0);
-            I_enD, I_enB, I_enA         : in std_logic;
+            I_enD                       : in std_logic;
             O_dataD, O_dataB, O_dataA   : out std_logic_vector(15 downto 0)
         );
     end component;
@@ -59,7 +59,7 @@ architecture Behavior of CPU is
     -- The register signals
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal O_dataA, O_dataB, O_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
-    signal I_enA, I_enB, I_enD : std_logic := '0';
+    signal I_enD : std_logic := '0';
 begin
     ctrl : Control port map (clk => clk, reset => '0', state => current_state);
     
@@ -88,9 +88,7 @@ begin
         O_dataD => O_dataD,
         O_dataB => O_dataB,
         O_dataA => O_dataA,
-        I_enD => I_enD,
-        I_enB => I_enB,
-        I_enA => I_enA
+        I_enD => I_enD
     );
     
     process (clk)
@@ -114,6 +112,7 @@ begin
                 reg_enable <= '0';
                 ready <= '0';
                 
+                -- LI
                 if opcode = "0100" then
                     I_dataD(0) <= imm(0);
                     I_dataD(1) <= imm(1);

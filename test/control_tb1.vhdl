@@ -40,9 +40,7 @@ architecture Behavior of control_tb1 is
             sel_B   : in std_logic_vector(2 downto 0);
             sel_D   : in std_logic_vector(2 downto 0);
             I_dataA : in std_logic_vector(15 downto 0);
-            I_enA   : in std_logic;
             I_dataB : in std_logic_vector(15 downto 0);
-            I_enB   : in std_logic;
             I_dataD : in std_logic_vector (15 downto 0);
             I_enD   : in std_logic;
             O_dataD : out std_logic_vector(15 downto 0);
@@ -65,7 +63,7 @@ architecture Behavior of control_tb1 is
     signal reg_enable : std_logic := '0';
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal O_dataA, O_dataB, O_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
-    signal I_enA, I_enB, I_enD : std_logic := '0';
+    signal I_enD : std_logic := '0';
 
     -- Clock period definitions
     constant clk_period : time := 10 ns;
@@ -102,8 +100,6 @@ begin
         O_dataA => O_dataA,
         O_dataB => O_dataB,
         O_dataD => O_dataD,
-        I_enA => I_enA,
-        I_enB => I_enB,
         I_enD => I_enD
     );
     
@@ -145,8 +141,6 @@ begin
             wait until state(1) = '1';
             
             -- Stage 2: Register read
-            I_enA <= '0';
-            I_enB <= '0';
             I_enD <= '0';
             reg_enable <= '1';
             wait until state(2) = '1';
@@ -164,8 +158,6 @@ begin
             wait until state(3) = '1';
             
             -- Stage 4: Register write
-            I_enA <= '1';
-            I_enB <= '1';
             I_enD <= '1';
             wait until state(0) = '1';
         end loop;
