@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Tue Mar  2 17:07:25 2021
+[*]
+[dumpfile] "/home/patrick/Projects_Github/tiny-cpu/sim/cpu_tb.ghw"
+[dumpfile_mtime] "Tue Mar  2 16:55:18 2021"
+[dumpfile_size] 4108
+[savefile] "/home/patrick/Projects_Github/tiny-cpu/cpu_waveform.gtkw"
+[timestart] 0
+[size] 1920 997
+[pos] -1 -1
+*-26.007879 275000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[sst_width] 238
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 295
+@28
+top.cpu_tb.clk
+top.cpu_tb.ready
+top.cpu_tb.uut.out_ready
+@22
+#{top.cpu_tb.uut.current_state[3:0]} top.cpu_tb.uut.current_state[3] top.cpu_tb.uut.current_state[2] top.cpu_tb.uut.current_state[1] top.cpu_tb.uut.current_state[0]
+#{top.cpu_tb.uut.input[15:0]} top.cpu_tb.uut.input[15] top.cpu_tb.uut.input[14] top.cpu_tb.uut.input[13] top.cpu_tb.uut.input[12] top.cpu_tb.uut.input[11] top.cpu_tb.uut.input[10] top.cpu_tb.uut.input[9] top.cpu_tb.uut.input[8] top.cpu_tb.uut.input[7] top.cpu_tb.uut.input[6] top.cpu_tb.uut.input[5] top.cpu_tb.uut.input[4] top.cpu_tb.uut.input[3] top.cpu_tb.uut.input[2] top.cpu_tb.uut.input[1] top.cpu_tb.uut.input[0]
+#{top.cpu_tb.uut.decode.opcode[3:0]} top.cpu_tb.uut.decode.opcode[3] top.cpu_tb.uut.decode.opcode[2] top.cpu_tb.uut.decode.opcode[1] top.cpu_tb.uut.decode.opcode[0]
+@28
+#{top.cpu_tb.uut.decode.funct[2:0]} top.cpu_tb.uut.decode.funct[2] top.cpu_tb.uut.decode.funct[1] top.cpu_tb.uut.decode.funct[0]
+@22
+#{top.cpu_tb.uut.decode.imm[5:0]} top.cpu_tb.uut.decode.imm[5] top.cpu_tb.uut.decode.imm[4] top.cpu_tb.uut.decode.imm[3] top.cpu_tb.uut.decode.imm[2] top.cpu_tb.uut.decode.imm[1] top.cpu_tb.uut.decode.imm[0]
+@200
+-
+@28
+#{top.cpu_tb.uut.regs.sel_d[2:0]} top.cpu_tb.uut.regs.sel_d[2] top.cpu_tb.uut.regs.sel_d[1] top.cpu_tb.uut.regs.sel_d[0]
+#{top.cpu_tb.uut.regs.sel_b[2:0]} top.cpu_tb.uut.regs.sel_b[2] top.cpu_tb.uut.regs.sel_b[1] top.cpu_tb.uut.regs.sel_b[0]
+#{top.cpu_tb.uut.regs.sel_a[2:0]} top.cpu_tb.uut.regs.sel_a[2] top.cpu_tb.uut.regs.sel_a[1] top.cpu_tb.uut.regs.sel_a[0]
+@23
+#{top.cpu_tb.uut.regs.i_datad[15:0]} top.cpu_tb.uut.regs.i_datad[15] top.cpu_tb.uut.regs.i_datad[14] top.cpu_tb.uut.regs.i_datad[13] top.cpu_tb.uut.regs.i_datad[12] top.cpu_tb.uut.regs.i_datad[11] top.cpu_tb.uut.regs.i_datad[10] top.cpu_tb.uut.regs.i_datad[9] top.cpu_tb.uut.regs.i_datad[8] top.cpu_tb.uut.regs.i_datad[7] top.cpu_tb.uut.regs.i_datad[6] top.cpu_tb.uut.regs.i_datad[5] top.cpu_tb.uut.regs.i_datad[4] top.cpu_tb.uut.regs.i_datad[3] top.cpu_tb.uut.regs.i_datad[2] top.cpu_tb.uut.regs.i_datad[1] top.cpu_tb.uut.regs.i_datad[0]
+@22
+#{top.cpu_tb.uut.regs.i_datab[15:0]} top.cpu_tb.uut.regs.i_datab[15] top.cpu_tb.uut.regs.i_datab[14] top.cpu_tb.uut.regs.i_datab[13] top.cpu_tb.uut.regs.i_datab[12] top.cpu_tb.uut.regs.i_datab[11] top.cpu_tb.uut.regs.i_datab[10] top.cpu_tb.uut.regs.i_datab[9] top.cpu_tb.uut.regs.i_datab[8] top.cpu_tb.uut.regs.i_datab[7] top.cpu_tb.uut.regs.i_datab[6] top.cpu_tb.uut.regs.i_datab[5] top.cpu_tb.uut.regs.i_datab[4] top.cpu_tb.uut.regs.i_datab[3] top.cpu_tb.uut.regs.i_datab[2] top.cpu_tb.uut.regs.i_datab[1] top.cpu_tb.uut.regs.i_datab[0]
+#{top.cpu_tb.uut.regs.i_dataa[15:0]} top.cpu_tb.uut.regs.i_dataa[15] top.cpu_tb.uut.regs.i_dataa[14] top.cpu_tb.uut.regs.i_dataa[13] top.cpu_tb.uut.regs.i_dataa[12] top.cpu_tb.uut.regs.i_dataa[11] top.cpu_tb.uut.regs.i_dataa[10] top.cpu_tb.uut.regs.i_dataa[9] top.cpu_tb.uut.regs.i_dataa[8] top.cpu_tb.uut.regs.i_dataa[7] top.cpu_tb.uut.regs.i_dataa[6] top.cpu_tb.uut.regs.i_dataa[5] top.cpu_tb.uut.regs.i_dataa[4] top.cpu_tb.uut.regs.i_dataa[3] top.cpu_tb.uut.regs.i_dataa[2] top.cpu_tb.uut.regs.i_dataa[1] top.cpu_tb.uut.regs.i_dataa[0]
+#{top.cpu_tb.uut.regs.o_datad[15:0]} top.cpu_tb.uut.regs.o_datad[15] top.cpu_tb.uut.regs.o_datad[14] top.cpu_tb.uut.regs.o_datad[13] top.cpu_tb.uut.regs.o_datad[12] top.cpu_tb.uut.regs.o_datad[11] top.cpu_tb.uut.regs.o_datad[10] top.cpu_tb.uut.regs.o_datad[9] top.cpu_tb.uut.regs.o_datad[8] top.cpu_tb.uut.regs.o_datad[7] top.cpu_tb.uut.regs.o_datad[6] top.cpu_tb.uut.regs.o_datad[5] top.cpu_tb.uut.regs.o_datad[4] top.cpu_tb.uut.regs.o_datad[3] top.cpu_tb.uut.regs.o_datad[2] top.cpu_tb.uut.regs.o_datad[1] top.cpu_tb.uut.regs.o_datad[0]
+#{top.cpu_tb.uut.regs.o_datab[15:0]} top.cpu_tb.uut.regs.o_datab[15] top.cpu_tb.uut.regs.o_datab[14] top.cpu_tb.uut.regs.o_datab[13] top.cpu_tb.uut.regs.o_datab[12] top.cpu_tb.uut.regs.o_datab[11] top.cpu_tb.uut.regs.o_datab[10] top.cpu_tb.uut.regs.o_datab[9] top.cpu_tb.uut.regs.o_datab[8] top.cpu_tb.uut.regs.o_datab[7] top.cpu_tb.uut.regs.o_datab[6] top.cpu_tb.uut.regs.o_datab[5] top.cpu_tb.uut.regs.o_datab[4] top.cpu_tb.uut.regs.o_datab[3] top.cpu_tb.uut.regs.o_datab[2] top.cpu_tb.uut.regs.o_datab[1] top.cpu_tb.uut.regs.o_datab[0]
+#{top.cpu_tb.uut.regs.o_dataa[15:0]} top.cpu_tb.uut.regs.o_dataa[15] top.cpu_tb.uut.regs.o_dataa[14] top.cpu_tb.uut.regs.o_dataa[13] top.cpu_tb.uut.regs.o_dataa[12] top.cpu_tb.uut.regs.o_dataa[11] top.cpu_tb.uut.regs.o_dataa[10] top.cpu_tb.uut.regs.o_dataa[9] top.cpu_tb.uut.regs.o_dataa[8] top.cpu_tb.uut.regs.o_dataa[7] top.cpu_tb.uut.regs.o_dataa[6] top.cpu_tb.uut.regs.o_dataa[5] top.cpu_tb.uut.regs.o_dataa[4] top.cpu_tb.uut.regs.o_dataa[3] top.cpu_tb.uut.regs.o_dataa[2] top.cpu_tb.uut.regs.o_dataa[1] top.cpu_tb.uut.regs.o_dataa[0]
+@200
+-
+@22
+#{top.cpu_tb.uut.out_data[15:0]} top.cpu_tb.uut.out_data[15] top.cpu_tb.uut.out_data[14] top.cpu_tb.uut.out_data[13] top.cpu_tb.uut.out_data[12] top.cpu_tb.uut.out_data[11] top.cpu_tb.uut.out_data[10] top.cpu_tb.uut.out_data[9] top.cpu_tb.uut.out_data[8] top.cpu_tb.uut.out_data[7] top.cpu_tb.uut.out_data[6] top.cpu_tb.uut.out_data[5] top.cpu_tb.uut.out_data[4] top.cpu_tb.uut.out_data[3] top.cpu_tb.uut.out_data[2] top.cpu_tb.uut.out_data[1] top.cpu_tb.uut.out_data[0]
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0
