@@ -15,14 +15,15 @@ end ALU;
 
 architecture Behavior of ALU is
 begin
-    process (clk)
+    process (clk, enable)
     begin
         if enable = '1' then
             case opcode is
-                ---when "000" => output <= std_logic_vector(unsigned(inputA) + unsigned(inputB));
-                when "000" => output <= X"01CC";
+                when "000" => output <= std_logic_vector(unsigned(inputA) + unsigned(inputB));
                 
-                when others => output <= X"0000";
+                when "001" => output <= std_logic_vector(unsigned(inputA) - unsigned(inputB));
+                
+                when others => output <= X"00FF";
             end case;
         end if;
     end process;

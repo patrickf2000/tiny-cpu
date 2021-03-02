@@ -77,7 +77,7 @@ architecture Behavior of CPU is
     signal I_enD : std_logic := '0';
     
     -- ALU signals
-    signal dataA, dataB : std_logic_vector(15 downto 0) := X"0000";
+    signal alu_dataA, alu_dataB, alu_dataD : std_logic_vector(15 downto 0) := X"0000";
 begin
     ctrl : Control port map (clk => clk, reset => '0', state => current_state);
     
@@ -113,9 +113,9 @@ begin
         clk => clk,
         enable => alu_enable,
         opcode => funct,
-        inputB => dataB,
-        inputA => dataA,
-        output => open
+        inputB => alu_dataB,
+        inputA => alu_dataA,
+        output => alu_dataD
     );
     
     process (clk)
@@ -154,7 +154,10 @@ begin
                     
                 -- ALU
                 elsif opcode = "0101" then
+                    alu_dataA <= O_dataA;
+                    alu_dataB <= O_dataB;
                     alu_enable <= '1';
+                    I_dataD <= alu_dataD;
                     I_enD <= '1';
                     
                 -- OUT

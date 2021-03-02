@@ -46,13 +46,15 @@ begin
     stim_proc: process
     
         -- Our instructions
-        type mem is array (0 to 3) of std_logic_vector(15 downto 0);
+        type mem is array (0 to 5) of std_logic_vector(15 downto 0);
         variable mem_seg : mem := (
             --"0101001000101011"      -- sub r0, r6, r3
-            "0100000011001100",     -- li r3, 12
-            "0100000000000001",     -- li r0, 1
-            "0101000010000011",     -- add r2, r0, r3
-            "0111000010000000"      -- out r2
+            "0100" & "000" & "011" & "001100",          -- li r3, 12
+            "0100" & "000" & "000" & "000001",          -- li r0, 1
+            "0101" & "000" & "010" & "000" & "011",     -- add r2, r0, r3
+            "0111" & "000" & "010" & "000000",          -- out r2
+            "0101" & "001" & "010" & "000" & "011",     -- sub r2, r0, r3
+            "0111" & "000" & "010" & "000000"           -- out r2
         );
         
         variable ln : Line;
@@ -64,7 +66,7 @@ begin
         wait for clk_period*10;
         
         -- Test
-        for i in 0 to 3 loop
+        for i in 0 to 5 loop
             instr <= mem_seg(i);
             
             wait until ready = '1';
