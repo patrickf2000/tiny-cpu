@@ -9,7 +9,7 @@ architecture Behavior of cpu_tb is
     component CPU is
         port (
             clk : in std_logic;
-            instr : in std_logic_vector(15 downto 0);
+            input : in std_logic_vector(15 downto 0);
             ready : out std_logic
         );
     end component;
@@ -23,7 +23,7 @@ architecture Behavior of cpu_tb is
 begin
     uut : CPU port map (
         clk => clk,
-        instr => instr,
+        input => instr,
         ready => ready
     );
 
