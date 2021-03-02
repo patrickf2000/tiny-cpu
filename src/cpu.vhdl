@@ -5,7 +5,9 @@ entity CPU is
     port (
         clk : in std_logic;
         input : in std_logic_vector(15 downto 0);
-        ready : out std_logic
+        ready : out std_logic;
+        out_ready : out std_logic;
+        out_data : out std_logic_vector(15 downto 0)
     );
 end CPU;
 
@@ -98,8 +100,10 @@ begin
             when "0001" =>
                 reg_enable <= '0';
                 I_enD <= '0';
-                en_decoder <= '1';
                 ready <= '0';
+                out_ready <= '0';
+                
+                en_decoder <= '1';
             
             -- Register read
             when "0010" =>
@@ -121,6 +125,11 @@ begin
                     I_dataD(4) <= imm(4);
                     I_dataD(5) <= imm(5);
                     I_enD <= '1';
+                    
+                -- OUT
+                elsif opcode = "0111" then
+                    out_data <= O_dataD;
+                    out_ready <= '1';
                 end if;
                 
             -- Register write
@@ -131,6 +140,7 @@ begin
             -- Error
             when others =>
                 en_decoder <= '0';
+                out_ready <= '0';
                 ready <= '1';
             
         end case;

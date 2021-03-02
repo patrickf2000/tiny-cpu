@@ -30,9 +30,9 @@ compile:
 
 run:
 	cd sim; \
-	ghdl -r $(GHDL_FLAGS) reg_tb $(GHDL_STOP) --wave=wave.ghw; \
-	ghdl -r $(GHDL_FLAGS) decoder_tb $(GHDL_STOP) --wave=decoder_wave.ghw; \
-	ghdl -r $(GHDL_FLAGS) control_tb1 $(GHDL_STOP) --wave=control_tb1.ghw; \
+	#ghdl -r $(GHDL_FLAGS) reg_tb $(GHDL_STOP) --wave=wave.ghw; \
+	#ghdl -r $(GHDL_FLAGS) decoder_tb $(GHDL_STOP) --wave=decoder_wave.ghw; \
+	#ghdl -r $(GHDL_FLAGS) control_tb1 $(GHDL_STOP) --wave=control_tb1.ghw; \
 	ghdl -r $(GHDL_FLAGS) cpu_tb $(GHDL_STOP) --wave=cpu_tb.ghw; \
 	cd ..
 

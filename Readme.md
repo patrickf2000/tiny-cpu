@@ -7,7 +7,7 @@ This project can be built using GHDL. Currently, most of the testing is done by 
 
 ### Instructions
 
-This is all a draft at the moment, but these are the instructions I'm shooting to implement (the only one at the moment that somewhat works is the `li` instruction)
+This is all a draft at the moment, but these are the instructions I'm shooting to implement (the only one at the moment that works is `li` and `out`)
 
 * `ld` -> Load memory to register
 * `str` -> Store register contents to memory
@@ -21,6 +21,7 @@ This is all a draft at the moment, but these are the instructions I'm shooting t
 * `lsh` -> Left shift
 * `rsh` -> Right shift
 * `br/be/bne/bl/ble/bg/bge` -> The branching instructions. These will all use the RISC-V style of `<reg> <reg> <destination label>`.
+* `out` -> A debug function to output register contents
 * `nop` -> Guess :)
 
 As for the registers, there are 8 register- `r0` through `r7`. They are addressed using 3 bits.
@@ -46,6 +47,7 @@ The following is the encoding for each instruction:
 * `li` -> 0100
 * `add/sub/and/or/xor/lsh/rsh` -> 0101 (The funct segment must be set)
 * `br/be/bne/bl/ble/bg/bge` -> 0110 (The funct segment must be set)
+* `out` -> 0111
 
 The funct segment is a 3-bit number corresponding to the ALU and control-flow opcodes.
 
