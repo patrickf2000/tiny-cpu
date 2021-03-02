@@ -1,6 +1,6 @@
 # The files
 FILES		= src/registers.vhdl src/decoder.vhdl src/control.vhdl \
-                src/cpu.vhdl
+                src/cpu.vhdl src/alu.vhdl
 SIMDIR		= sim
 SIMFILES	= test/reg_tb.vhdl test/decoder_tb.vhdl test/control_tb1.vhdl \
                 test/cpu_tb.vhdl

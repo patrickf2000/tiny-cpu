@@ -47,10 +47,23 @@ architecture Behavior of CPU is
         );
     end component;
     
+    -- The ALU component
+    component ALU is
+        port (
+            clk     : in std_logic;
+            enable  : in std_logic;
+            opcode  : in std_logic_vector(2 downto 0);
+            inputB  : in std_logic_vector(15 downto 0);
+            inputA  : in std_logic_vector(15 downto 0);
+            output  : out std_logic_vector(15 downto 0)
+        );
+    end component;
+    
     -- Signals
     signal current_state : std_logic_vector(3 downto 0) := "0000";
     signal en_decoder : std_logic := '0';
     signal reg_enable : std_logic := '0';
+    signal alu_enable : std_logic := '0';
     
     -- The decoder signals
     signal instr : std_logic_vector(15 downto 0) := X"0000";
@@ -62,6 +75,9 @@ architecture Behavior of CPU is
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal O_dataA, O_dataB, O_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
     signal I_enD : std_logic := '0';
+    
+    -- ALU signals
+    signal dataA, dataB : std_logic_vector(15 downto 0) := X"0000";
 begin
     ctrl : Control port map (clk => clk, reset => '0', state => current_state);
     
@@ -93,6 +109,15 @@ begin
         I_enD => I_enD
     );
     
+    alu_unit : ALU port map (
+        clk => clk,
+        enable => alu_enable,
+        opcode => funct,
+        inputB => dataB,
+        inputA => dataA,
+        output => open
+    );
+    
     process (clk)
     begin
         case (current_state) is
@@ -102,6 +127,7 @@ begin
                 I_enD <= '0';
                 ready <= '0';
                 out_ready <= '0';
+                alu_enable <= '0';
                 
                 en_decoder <= '1';
             
@@ -126,6 +152,11 @@ begin
                     I_dataD(5) <= imm(5);
                     I_enD <= '1';
                     
+                -- ALU
+                elsif opcode = "0101" then
+                    alu_enable <= '1';
+                    I_enD <= '1';
+                    
                 -- OUT
                 elsif opcode = "0111" then
                     out_data <= O_dataD;
@@ -134,6 +165,7 @@ begin
                 
             -- Register write
             when "1000" =>
+                alu_enable <= '0';
                 reg_enable <= '1';
                 ready <= '1';
             
