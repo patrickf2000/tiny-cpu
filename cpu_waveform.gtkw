@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Wed Mar  3 16:46:22 2021
+[*] Wed Mar  3 19:21:43 2021
 [*]
 [dumpfile] "/home/patrick/Projects_Github/tiny-cpu/sim/cpu_tb.ghw"
-[dumpfile_mtime] "Wed Mar  3 16:46:18 2021"
-[dumpfile_size] 4928
+[dumpfile_mtime] "Wed Mar  3 19:21:10 2021"
+[dumpfile_size] 5270
 [savefile] "/home/patrick/Projects_Github/tiny-cpu/cpu_waveform.gtkw"
 [timestart] 0
 [size] 1920 1017
@@ -13,6 +13,7 @@
 [treeopen] top.
 [treeopen] top.cpu_tb.
 [treeopen] top.cpu_tb.uut.
+[treeopen] top.cpu_tb.uut.decode.
 [sst_width] 238
 [signals_width] 206
 [sst_expanded] 1
@@ -23,7 +24,7 @@ top.cpu_tb.ready
 top.cpu_tb.halt
 @420
 top.cpu_tb.uut.pc
-@23
+@22
 #{top.cpu_tb.instr[96:0]} top.cpu_tb.instr[96] top.cpu_tb.instr[95] top.cpu_tb.instr[94] top.cpu_tb.instr[93] top.cpu_tb.instr[92] top.cpu_tb.instr[91] top.cpu_tb.instr[90] top.cpu_tb.instr[89] top.cpu_tb.instr[88] top.cpu_tb.instr[87] top.cpu_tb.instr[86] top.cpu_tb.instr[85] top.cpu_tb.instr[84] top.cpu_tb.instr[83] top.cpu_tb.instr[82] top.cpu_tb.instr[81] top.cpu_tb.instr[80] top.cpu_tb.instr[79] top.cpu_tb.instr[78] top.cpu_tb.instr[77] top.cpu_tb.instr[76] top.cpu_tb.instr[75] top.cpu_tb.instr[74] top.cpu_tb.instr[73] top.cpu_tb.instr[72] top.cpu_tb.instr[71] top.cpu_tb.instr[70] top.cpu_tb.instr[69] top.cpu_tb.instr[68] top.cpu_tb.instr[67] top.cpu_tb.instr[66] top.cpu_tb.instr[65] top.cpu_tb.instr[64] top.cpu_tb.instr[63] top.cpu_tb.instr[62] top.cpu_tb.instr[61] top.cpu_tb.instr[60] top.cpu_tb.instr[59] top.cpu_tb.instr[58] top.cpu_tb.instr[57] top.cpu_tb.instr[56] top.cpu_tb.instr[55] top.cpu_tb.instr[54] top.cpu_tb.instr[53] top.cpu_tb.instr[52] top.cpu_tb.instr[51] top.cpu_tb.instr[50] top.cpu_tb.instr[49] top.cpu_tb.instr[48] top.cpu_tb.instr[47] top.cpu_tb.instr[46] top.cpu_tb.instr[45] top.cpu_tb.instr[44] top.cpu_tb.instr[43] top.cpu_tb.instr[42] top.cpu_tb.instr[41] top.cpu_tb.instr[40] top.cpu_tb.instr[39] top.cpu_tb.instr[38] top.cpu_tb.instr[37] top.cpu_tb.instr[36] top.cpu_tb.instr[35] top.cpu_tb.instr[34] top.cpu_tb.instr[33] top.cpu_tb.instr[32] top.cpu_tb.instr[31] top.cpu_tb.instr[30] top.cpu_tb.instr[29] top.cpu_tb.instr[28] top.cpu_tb.instr[27] top.cpu_tb.instr[26] top.cpu_tb.instr[25] top.cpu_tb.instr[24] top.cpu_tb.instr[23] top.cpu_tb.instr[22] top.cpu_tb.instr[21] top.cpu_tb.instr[20] top.cpu_tb.instr[19] top.cpu_tb.instr[18] top.cpu_tb.instr[17] top.cpu_tb.instr[16] top.cpu_tb.instr[15] top.cpu_tb.instr[14] top.cpu_tb.instr[13] top.cpu_tb.instr[12] top.cpu_tb.instr[11] top.cpu_tb.instr[10] top.cpu_tb.instr[9] top.cpu_tb.instr[8] top.cpu_tb.instr[7] top.cpu_tb.instr[6] top.cpu_tb.instr[5] top.cpu_tb.instr[4] top.cpu_tb.instr[3] top.cpu_tb.instr[2] top.cpu_tb.instr[1] top.cpu_tb.instr[0]
 @28
 top.cpu_tb.uut.out_ready
@@ -32,8 +33,8 @@ top.cpu_tb.uut.out_ready
 #{top.cpu_tb.uut.decode.opcode[3:0]} top.cpu_tb.uut.decode.opcode[3] top.cpu_tb.uut.decode.opcode[2] top.cpu_tb.uut.decode.opcode[1] top.cpu_tb.uut.decode.opcode[0]
 @28
 #{top.cpu_tb.uut.decode.funct[2:0]} top.cpu_tb.uut.decode.funct[2] top.cpu_tb.uut.decode.funct[1] top.cpu_tb.uut.decode.funct[0]
-@22
-#{top.cpu_tb.uut.decode.imm[5:0]} top.cpu_tb.uut.decode.imm[5] top.cpu_tb.uut.decode.imm[4] top.cpu_tb.uut.decode.imm[3] top.cpu_tb.uut.decode.imm[2] top.cpu_tb.uut.decode.imm[1] top.cpu_tb.uut.decode.imm[0]
+@23
+#{top.cpu_tb.uut.decode.imm[8:0]} top.cpu_tb.uut.decode.imm[8] top.cpu_tb.uut.decode.imm[7] top.cpu_tb.uut.decode.imm[6] top.cpu_tb.uut.decode.imm[5] top.cpu_tb.uut.decode.imm[4] top.cpu_tb.uut.decode.imm[3] top.cpu_tb.uut.decode.imm[2] top.cpu_tb.uut.decode.imm[1] top.cpu_tb.uut.decode.imm[0]
 @200
 -
 @28

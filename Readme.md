@@ -31,11 +31,9 @@ As for the registers, there are 8 register- `r0` through `r7`. They are addresse
 
 All instructions are 16-bits long. Tiny-CPU is big-endian. There are two formats: 3-register instructions, and 2-register instructions.
 
-Most instructions follow the 3-register instruction encoding: `[15:12 -> Opcode][11:9 -> Funct][8:6 -> Destination register][5:3 -> Source 2][2:0 -> Source 1]`
+Most instructions follow the 3-register instruction encoding: `[15:12 -> Opcode][11:9 -> Destination register][8:6 -> Source 2][5:3 -> Source 1][2:0 -> Funct]`
 
-The 2-register encoding: `[15:12 -> Opcode][11:9 -> Funct][8:6 -> Destination register][5:0 -> Immediate or address]`
-
-I'm thinking about changing the 2-register encoding to remove the `funct` segment, as none of the instructions utilizing the `funct` segment have a corresponding immediate instruction.
+The 2-register encoding: `[15:12 -> Opcode][11:9 -> Destination register][8:0 -> Immediate or address]`
 
 ### Instruction encoding
 

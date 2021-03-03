@@ -13,8 +13,8 @@ entity Decoder is
         regA    : out std_logic_vector(2 downto 0);     -- Source reg1
         regB    : out std_logic_vector(2 downto 0);     -- Source reg2
         regD    : out std_logic_vector(2 downto 0);     -- Destination register
-        addr    : out std_logic_vector(5 downto 0);     -- Memory address
-        imm     : out std_logic_vector(5 downto 0)      -- Immediate
+        addr    : out std_logic_vector(8 downto 0);     -- Memory address
+        imm     : out std_logic_vector(8 downto 0)      -- Immediate
     );
 end Decoder;
 
@@ -27,14 +27,14 @@ begin
         if enable = '1' then
             -- These will always be present
             opcode <= instr(15 downto 12);
-            funct <= instr(11 downto 9);
-            regD <= instr(8 downto 6);
+            regD <= instr(11 downto 9);
             
             -- All this may or may not be present, depending on the instruction
-            regB <= instr(5 downto 3);
-            regA <= instr(2 downto 0);
-            addr <= instr(5 downto 0);
-            imm <= instr(5 downto 0);
+            regB <= instr(8 downto 6);
+            regA <= instr(5 downto 3);
+            funct <= instr(2 downto 0);
+            addr <= instr(8 downto 0);
+            imm <= instr(8 downto 0);
         end if;
     end process;
 end Behavior;

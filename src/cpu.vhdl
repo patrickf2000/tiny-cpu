@@ -36,7 +36,7 @@ architecture Behavior of CPU is
             opcode              : out std_logic_vector(3 downto 0);
             funct               : out std_logic_vector(2 downto 0);
             regD, regB, regA    : out std_logic_vector(2 downto 0);
-            addr, imm           : out std_logic_vector(5 downto 0)
+            addr, imm           : out std_logic_vector(8 downto 0)
         );
     end component;
     
@@ -77,7 +77,7 @@ architecture Behavior of CPU is
     -- The decoder signals
     signal opcode : std_logic_vector(3 downto 0) := X"0";
     signal funct, regA, regB, regD : std_logic_vector(2 downto 0) := "000";
-    signal addr, imm : std_logic_vector(5 downto 0) := "000000";
+    signal addr, imm : std_logic_vector(8 downto 0) := "000000000";
     
     -- The register signals
     signal I_dataA, I_dataB, I_dataD : std_logic_vector(15 downto 0) := "0000000000000000";
@@ -188,6 +188,9 @@ begin
                             I_dataD(3) <= imm(3);
                             I_dataD(4) <= imm(4);
                             I_dataD(5) <= imm(5);
+                            I_dataD(6) <= imm(6);
+                            I_dataD(7) <= imm(7);
+                            I_dataD(8) <= imm(8);
                             I_enD <= '1';
                             
                         -- ALU
