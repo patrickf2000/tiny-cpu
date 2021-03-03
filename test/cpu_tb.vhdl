@@ -61,9 +61,11 @@ begin
         variable out_num : integer;
     begin
         -- hold reset state for 100 ns.
-        wait for 100 ns;  
+        wait for 100 ns;
+        wait for clk_period;
+        wait until ready = '1';
 
-        wait for clk_period*10;
+        --wait for clk_period*10;
         
         -- Test
         for i in 0 to 5 loop

@@ -60,6 +60,7 @@ architecture Behavior of CPU is
     end component;
     
     -- Signals
+    signal output_data : std_logic_vector(15 downto 0) := X"0000";
     signal current_state : std_logic_vector(3 downto 0) := "0000";
     signal en_decoder : std_logic := '0';
     signal reg_enable : std_logic := '0';
@@ -120,65 +121,72 @@ begin
     
     process (clk)
     begin
-        case (current_state) is
-            -- Decode
-            when "0001" =>
-                reg_enable <= '0';
-                I_enD <= '0';
-                ready <= '0';
-                out_ready <= '0';
-                alu_enable <= '0';
-                
-                en_decoder <= '1';
-            
-            -- Register read
-            when "0010" =>
-                reg_enable <= '1';
-                en_decoder <= '0';
-                ready <= '0';
-            
-            -- Execute
-            when "0100" =>
-                reg_enable <= '0';
-                ready <= '0';
-                
-                -- LI
-                if opcode = "0100" then
-                    I_dataD(0) <= imm(0);
-                    I_dataD(1) <= imm(1);
-                    I_dataD(2) <= imm(2);
-                    I_dataD(3) <= imm(3);
-                    I_dataD(4) <= imm(4);
-                    I_dataD(5) <= imm(5);
-                    I_enD <= '1';
+        if rising_edge(clk) then
+            case (current_state) is
+                -- Decode
+                when "0001" =>
+                    reg_enable <= '0';
+                    I_enD <= '0';
+                    ready <= '0';
+                    out_ready <= '0';
+                    alu_enable <= '0';
                     
-                -- ALU
-                elsif opcode = "0101" then
-                    alu_dataA <= O_dataA;
-                    alu_dataB <= O_dataB;
-                    alu_enable <= '1';
-                    I_dataD <= alu_dataD;
-                    I_enD <= '1';
-                    
-                -- OUT
-                elsif opcode = "0111" then
-                    out_data <= O_dataD;
-                    out_ready <= '1';
-                end if;
+                    en_decoder <= '1';
                 
-            -- Register write
-            when "1000" =>
-                alu_enable <= '0';
-                reg_enable <= '1';
-                ready <= '1';
-            
-            -- Error
-            when others =>
-                en_decoder <= '0';
-                out_ready <= '0';
-                ready <= '1';
-            
-        end case;
+                -- Register read
+                when "0010" =>
+                    reg_enable <= '1';
+                    en_decoder <= '0';
+                    ready <= '0';
+                
+                -- Execute
+                when "0100" =>
+                    reg_enable <= '0';
+                    ready <= '0';
+                    
+                    -- LI
+                    if opcode = "0100" then
+                        I_dataD(0) <= imm(0);
+                        I_dataD(1) <= imm(1);
+                        I_dataD(2) <= imm(2);
+                        I_dataD(3) <= imm(3);
+                        I_dataD(4) <= imm(4);
+                        I_dataD(5) <= imm(5);
+                        I_enD <= '1';
+                        
+                    -- ALU
+                    elsif opcode = "0101" then
+                        alu_dataA <= O_dataA;
+                        alu_dataB <= O_dataB;
+                        alu_enable <= '1';
+                        I_enD <= '1';
+                        
+                    -- OUT
+                    elsif opcode = "0111" then
+                        output_data <= O_dataD;
+                        out_ready <= '1';
+                    end if;
+                    
+                -- Register write
+                when "1000" =>
+                    if alu_enable = '1' then
+                        I_dataD <= alu_dataD;
+                    end if;
+                    
+                    alu_enable <= '0';
+                    reg_enable <= '1';
+                    ready <= '1';
+                
+                -- Error
+                when others =>
+                    en_decoder <= '0';
+                    out_ready <= '0';
+                    ready <= '1';
+                
+            end case;
+        end if;
     end process;
+    
+    out_data <= output_data;
 end Behavior;
 
