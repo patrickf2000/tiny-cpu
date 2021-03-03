@@ -8,11 +8,15 @@ end cpu_tb;
 
 architecture Behavior of cpu_tb is
 
+    -- The size of memory
+    constant MEM_SIZE : integer := 112;
+
+    -- Declare our CPU component
     component CPU is
         port (
             clk : in std_logic;
             reset : in std_logic;
-            input : in std_logic_vector(112 downto 0);
+            input : in std_logic_vector(MEM_SIZE downto 0);
             ready : out std_logic;
             halt : out std_logic;
             out_ready : out std_logic;
@@ -52,7 +56,7 @@ begin
     stim_proc: process
     
         -- Our instructions
-        variable mem_seg : std_logic_vector(112 downto 0) :=
+        variable mem_seg : std_logic_vector(MEM_SIZE downto 0) :=
             "0"
             & "1000" & "000" & "000" & "000000"           -- hlt
             & "0111" & "000" & "010" & "000000"           -- out r2
@@ -76,14 +80,16 @@ begin
         instr <= mem_seg;
         
         while halt = '0' loop
-            wait until out_ready = '1';
-            out_num := conv_integer(out_data);
-            
-            write(ln, String'("--> "));
-            write(ln, to_bitvector(out_data));
-            write(ln, String'(" | "));
-            write(ln, out_num);
-            writeline(output, ln);
+            if out_ready = '1' then
+                out_num := conv_integer(out_data);
+                
+                write(ln, String'("--> "));
+                write(ln, to_bitvector(out_data));
+                write(ln, String'(" | "));
+                write(ln, out_num);
+                writeline(output, ln);
+            end if;
+            wait for clk_period;
         end loop;
         
         wait;

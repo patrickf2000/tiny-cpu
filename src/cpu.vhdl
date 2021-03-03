@@ -14,6 +14,9 @@ entity CPU is
 end CPU;
 
 architecture Behavior of CPU is
+
+    -- The size of memory
+    constant MEM_SIZE : integer := 112;
     
     -- Declare the control component
     component Control is
@@ -203,7 +206,7 @@ begin
                             I_dataD <= alu_dataD;
                         end if;
                         
-                        if PC + 16 >= 111 then
+                        if PC + 16 >= (MEM_SIZE - 1) then
                             halt <= '1';
                         else
                             halt <= '0';
@@ -212,6 +215,7 @@ begin
                         
                         alu_enable <= '0';
                         reg_enable <= '1';
+                        out_ready <= '0';
                         ready <= '1';
                     
                     -- Error
