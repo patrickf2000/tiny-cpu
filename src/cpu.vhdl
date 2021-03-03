@@ -5,7 +5,7 @@ entity CPU is
     port (
         clk : in std_logic;
         reset : in std_logic;
-        input : in std_logic_vector(15 downto 0);
+        input : in std_logic_vector(96 downto 0);
         ready : out std_logic;
         halt : out std_logic;
         out_ready : out std_logic;
@@ -67,10 +67,11 @@ architecture Behavior of CPU is
     signal en_decoder : std_logic := '0';
     signal reg_enable : std_logic := '0';
     signal alu_enable : std_logic := '0';
+    
+    signal instr : std_logic_vector(15 downto 0) := X"0000";
     signal PC : integer := 0;
     
     -- The decoder signals
-    signal instr : std_logic_vector(15 downto 0) := X"0000";
     signal opcode : std_logic_vector(3 downto 0) := X"0";
     signal funct, regA, regB, regD : std_logic_vector(2 downto 0) := "000";
     signal addr, imm : std_logic_vector(5 downto 0) := "000000";
@@ -88,7 +89,7 @@ begin
     decode : Decoder port map (
         clk => clk,
         enable => en_decoder,
-        instr => input,
+        instr => instr,
         opcode => opcode,
         funct => funct,
         regD => regD,
@@ -138,6 +139,23 @@ begin
                         ready <= '0';
                         out_ready <= '0';
                         alu_enable <= '0';
+                        
+                        instr(0) <= input(PC);
+                        instr(1) <= input(PC+1);
+                        instr(2) <= input(PC+2);
+                        instr(3) <= input(PC+3);
+                        instr(4) <= input(PC+4);
+                        instr(5) <= input(PC+5);
+                        instr(6) <= input(PC+6);
+                        instr(7) <= input(PC+7);
+                        instr(8) <= input(PC+8);
+                        instr(9) <= input(PC+9);
+                        instr(10) <= input(PC+10);
+                        instr(11) <= input(PC+11);
+                        instr(12) <= input(PC+12);
+                        instr(13) <= input(PC+13);
+                        instr(14) <= input(PC+14);
+                        instr(15) <= input(PC+15);
                         
                         en_decoder <= '1';
                     

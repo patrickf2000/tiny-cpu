@@ -12,7 +12,7 @@ architecture Behavior of cpu_tb is
         port (
             clk : in std_logic;
             reset : in std_logic;
-            input : in std_logic_vector(15 downto 0);
+            input : in std_logic_vector(96 downto 0);
             ready : out std_logic;
             halt : out std_logic;
             out_ready : out std_logic;
@@ -22,7 +22,9 @@ architecture Behavior of cpu_tb is
     
     -- Signals
     signal clk, reset, ready, halt, out_ready : std_logic := '0';
-    signal instr, out_data : std_logic_vector(15 downto 0) := X"0000";
+    signal out_data : std_logic_vector(15 downto 0) := X"0000";
+    signal instr : std_logic_vector(96 downto 0) :=
+        X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & "0";
     
     -- Clock period definitions
     constant clk_period : time := 10 ns;
@@ -49,16 +51,15 @@ begin
     stim_proc: process
     
         -- Our instructions
-        type mem is array (0 to 5) of std_logic_vector(15 downto 0);
-        variable mem_seg : mem := (
-            --"0101001000101011"      -- sub r0, r6, r3
-            "0100" & "000" & "011" & "001100",          -- li r3, 12
-            "0100" & "000" & "000" & "000001",          -- li r0, 1
-            "0101" & "000" & "010" & "000" & "011",     -- add r2, r0, r3
-            "0111" & "000" & "010" & "000000",          -- out r2
-            "0101" & "001" & "010" & "000" & "011",     -- sub r2, r0, r3
-            "0111" & "000" & "010" & "000000"           -- out r2
-        );
+        variable mem_seg : std_logic_vector(96 downto 0) :=
+            "0"
+            & "0111" & "000" & "010" & "000000"           -- out r2
+            & "0101" & "001" & "010" & "000" & "011"      -- sub r2, r0, r3
+            & "0111" & "000" & "010" & "000000"           -- out r2
+            & "0101" & "000" & "010" & "000" & "011"      -- add r2, r0, r3
+            & "0100" & "000" & "000" & "000001"           -- li r0, 1
+            & "0100" & "000" & "011" & "001100"           -- li r3, 12
+        ;
         
         variable ln : Line;
         variable out_num : integer;
@@ -70,26 +71,20 @@ begin
         wait until ready = '1';
         reset <= '0';
         
-        -- Test
-        for i in 0 to 5 loop
-            instr <= mem_seg(i);
+        instr <= mem_seg;
+        
+        while halt = '0' loop
+            wait until out_ready = '1';
+            out_num := conv_integer(out_data);
             
-            wait until ready = '1';
-            
-            if out_ready = '1' then
-                out_num := conv_integer(out_data);
-                
-                write(ln, String'("--> "));
-                write(ln, to_bitvector(out_data));
-                write(ln, String'(" | "));
-                write(ln, out_num);
-                writeline(output, ln);
-            end if;
+            write(ln, String'("--> "));
+            write(ln, to_bitvector(out_data));
+            write(ln, String'(" | "));
+            write(ln, out_num);
+            writeline(output, ln);
         end loop;
         
-        wait until halt = '1';
-        
-        --wait;
+        wait;
     end process;
 end Behavior;
 
