@@ -9,7 +9,7 @@ end cpu_tb;
 architecture Behavior of cpu_tb is
 
     -- The size of memory
-    constant MEM_SIZE : integer := 128;
+    constant MEM_SIZE : integer := 144;
 
     -- Declare our CPU component
     component CPU is
@@ -29,7 +29,7 @@ architecture Behavior of cpu_tb is
     signal out_data : std_logic_vector(15 downto 0) := X"0000";
     signal instr : std_logic_vector(MEM_SIZE downto 0) :=
         X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & 
-        X"0000" & X"0000" & "0";
+        X"0000" & X"0000" & X"0000" & "0";
     
     -- Clock period definitions
     constant clk_period : time := 10 ns;
@@ -63,6 +63,7 @@ begin
             & "0011" & "100" & "010" & "010" & "000"      -- mv r4, r2
             & "0101" & "010" & "000" & "011" & "001"      -- sub r2, r0, r3
             & "0111" & "010" & "000" & "000000"           -- out r2
+            & "0110" & "000" & "000100000"                -- br <2>
             & "0101" & "010" & "000" & "011" & "000"      -- add r2, r0, r3
             & "0100" & "000" & "000000001"                -- li r0, 1
             & "0100" & "011" & "000001100"                -- li r3, 12
