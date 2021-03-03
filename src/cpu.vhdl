@@ -5,7 +5,7 @@ entity CPU is
     port (
         clk : in std_logic;
         reset : in std_logic;
-        input : in std_logic_vector(96 downto 0);
+        input : in std_logic_vector(112 downto 0);
         ready : out std_logic;
         halt : out std_logic;
         out_ready : out std_logic;
@@ -191,6 +191,10 @@ begin
                         elsif opcode = "0111" then
                             output_data <= O_dataD;
                             out_ready <= '1';
+                            
+                        -- HALT
+                        elsif opcode = "1000" then
+                            halt <= '1';
                         end if;
                         
                     -- Register write
@@ -199,7 +203,7 @@ begin
                             I_dataD <= alu_dataD;
                         end if;
                         
-                        if PC + 16 >= 95 then
+                        if PC + 16 >= 111 then
                             halt <= '1';
                         else
                             halt <= '0';

@@ -22,6 +22,7 @@ This is all a draft at the moment, but these are the instructions I'm shooting t
 * `rsh` -> Right shift
 * `br/be/bne/bl/ble/bg/bge` -> The branching instructions. These will all use the RISC-V style of `<reg> <reg> <destination label>`.
 * `out` -> A debug function to output register contents
+* `hlt` -> Halts the CPU
 * `nop` -> Guess :)
 
 As for the registers, there are 8 register- `r0` through `r7`. They are addressed using 3 bits.
@@ -48,6 +49,7 @@ The following is the encoding for each instruction:
 * `add/sub/and/or/xor/lsh/rsh` -> 0101 (The funct segment must be set)
 * `br/be/bne/bl/ble/bg/bge` -> 0110 (The funct segment must be set)
 * `out` -> 0111
+* `hlt` -> 1000
 
 The funct segment is a 3-bit number corresponding to the ALU and control-flow opcodes.
 

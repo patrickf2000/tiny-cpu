@@ -12,7 +12,7 @@ architecture Behavior of cpu_tb is
         port (
             clk : in std_logic;
             reset : in std_logic;
-            input : in std_logic_vector(96 downto 0);
+            input : in std_logic_vector(112 downto 0);
             ready : out std_logic;
             halt : out std_logic;
             out_ready : out std_logic;
@@ -23,8 +23,9 @@ architecture Behavior of cpu_tb is
     -- Signals
     signal clk, reset, ready, halt, out_ready : std_logic := '0';
     signal out_data : std_logic_vector(15 downto 0) := X"0000";
-    signal instr : std_logic_vector(96 downto 0) :=
-        X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & "0";
+    signal instr : std_logic_vector(112 downto 0) :=
+        X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & X"0000" & 
+        X"0000" & "0";
     
     -- Clock period definitions
     constant clk_period : time := 10 ns;
@@ -51,8 +52,9 @@ begin
     stim_proc: process
     
         -- Our instructions
-        variable mem_seg : std_logic_vector(96 downto 0) :=
+        variable mem_seg : std_logic_vector(112 downto 0) :=
             "0"
+            & "1000" & "000" & "000" & "000000"           -- hlt
             & "0111" & "000" & "010" & "000000"           -- out r2
             & "0101" & "001" & "010" & "000" & "011"      -- sub r2, r0, r3
             & "0111" & "000" & "010" & "000000"           -- out r2
