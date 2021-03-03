@@ -11,15 +11,17 @@ architecture Behavior of cpu_tb is
     component CPU is
         port (
             clk : in std_logic;
+            reset : in std_logic;
             input : in std_logic_vector(15 downto 0);
             ready : out std_logic;
+            halt : out std_logic;
             out_ready : out std_logic;
             out_data : out std_logic_vector(15 downto 0)
         );
     end component;
     
     -- Signals
-    signal clk, ready, out_ready : std_logic := '0';
+    signal clk, reset, ready, halt, out_ready : std_logic := '0';
     signal instr, out_data : std_logic_vector(15 downto 0) := X"0000";
     
     -- Clock period definitions
@@ -27,6 +29,7 @@ architecture Behavior of cpu_tb is
 begin
     uut : CPU port map (
         clk => clk,
+        reset => reset,
         input => instr,
         ready => ready,
         out_ready => out_ready,
@@ -63,9 +66,9 @@ begin
         -- hold reset state for 100 ns.
         wait for 100 ns;
         wait for clk_period;
+        reset <= '1';
         wait until ready = '1';
-
-        --wait for clk_period*10;
+        reset <= '0';
         
         -- Test
         for i in 0 to 5 loop
@@ -84,7 +87,9 @@ begin
             end if;
         end loop;
         
-        wait;
+        wait until halt = '1';
+        
+        --wait;
     end process;
 end Behavior;
 

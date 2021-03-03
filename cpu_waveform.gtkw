@@ -1,23 +1,30 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Tue Mar  2 17:07:25 2021
+[*] Wed Mar  3 13:30:21 2021
 [*]
 [dumpfile] "/home/patrick/Projects_Github/tiny-cpu/sim/cpu_tb.ghw"
-[dumpfile_mtime] "Tue Mar  2 16:55:18 2021"
-[dumpfile_size] 4108
+[dumpfile_mtime] "Wed Mar  3 13:30:14 2021"
+[dumpfile_size] 4400
 [savefile] "/home/patrick/Projects_Github/tiny-cpu/cpu_waveform.gtkw"
 [timestart] 0
 [size] 1920 997
 [pos] -1 -1
-*-26.007879 275000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-26.007879 250000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
+[treeopen] top.cpu_tb.
+[treeopen] top.cpu_tb.uut.
 [sst_width] 238
-[signals_width] 174
+[signals_width] 206
 [sst_expanded] 1
 [sst_vpaned_height] 295
 @28
 top.cpu_tb.clk
 top.cpu_tb.ready
+@420
+top.cpu_tb.uut.pc
+@29
+top.cpu_tb.uut.reset
+@28
 top.cpu_tb.uut.out_ready
 @22
 #{top.cpu_tb.uut.current_state[3:0]} top.cpu_tb.uut.current_state[3] top.cpu_tb.uut.current_state[2] top.cpu_tb.uut.current_state[1] top.cpu_tb.uut.current_state[0]
@@ -33,9 +40,8 @@ top.cpu_tb.uut.out_ready
 #{top.cpu_tb.uut.regs.sel_d[2:0]} top.cpu_tb.uut.regs.sel_d[2] top.cpu_tb.uut.regs.sel_d[1] top.cpu_tb.uut.regs.sel_d[0]
 #{top.cpu_tb.uut.regs.sel_b[2:0]} top.cpu_tb.uut.regs.sel_b[2] top.cpu_tb.uut.regs.sel_b[1] top.cpu_tb.uut.regs.sel_b[0]
 #{top.cpu_tb.uut.regs.sel_a[2:0]} top.cpu_tb.uut.regs.sel_a[2] top.cpu_tb.uut.regs.sel_a[1] top.cpu_tb.uut.regs.sel_a[0]
-@23
-#{top.cpu_tb.uut.regs.i_datad[15:0]} top.cpu_tb.uut.regs.i_datad[15] top.cpu_tb.uut.regs.i_datad[14] top.cpu_tb.uut.regs.i_datad[13] top.cpu_tb.uut.regs.i_datad[12] top.cpu_tb.uut.regs.i_datad[11] top.cpu_tb.uut.regs.i_datad[10] top.cpu_tb.uut.regs.i_datad[9] top.cpu_tb.uut.regs.i_datad[8] top.cpu_tb.uut.regs.i_datad[7] top.cpu_tb.uut.regs.i_datad[6] top.cpu_tb.uut.regs.i_datad[5] top.cpu_tb.uut.regs.i_datad[4] top.cpu_tb.uut.regs.i_datad[3] top.cpu_tb.uut.regs.i_datad[2] top.cpu_tb.uut.regs.i_datad[1] top.cpu_tb.uut.regs.i_datad[0]
 @22
+#{top.cpu_tb.uut.regs.i_datad[15:0]} top.cpu_tb.uut.regs.i_datad[15] top.cpu_tb.uut.regs.i_datad[14] top.cpu_tb.uut.regs.i_datad[13] top.cpu_tb.uut.regs.i_datad[12] top.cpu_tb.uut.regs.i_datad[11] top.cpu_tb.uut.regs.i_datad[10] top.cpu_tb.uut.regs.i_datad[9] top.cpu_tb.uut.regs.i_datad[8] top.cpu_tb.uut.regs.i_datad[7] top.cpu_tb.uut.regs.i_datad[6] top.cpu_tb.uut.regs.i_datad[5] top.cpu_tb.uut.regs.i_datad[4] top.cpu_tb.uut.regs.i_datad[3] top.cpu_tb.uut.regs.i_datad[2] top.cpu_tb.uut.regs.i_datad[1] top.cpu_tb.uut.regs.i_datad[0]
 #{top.cpu_tb.uut.regs.i_datab[15:0]} top.cpu_tb.uut.regs.i_datab[15] top.cpu_tb.uut.regs.i_datab[14] top.cpu_tb.uut.regs.i_datab[13] top.cpu_tb.uut.regs.i_datab[12] top.cpu_tb.uut.regs.i_datab[11] top.cpu_tb.uut.regs.i_datab[10] top.cpu_tb.uut.regs.i_datab[9] top.cpu_tb.uut.regs.i_datab[8] top.cpu_tb.uut.regs.i_datab[7] top.cpu_tb.uut.regs.i_datab[6] top.cpu_tb.uut.regs.i_datab[5] top.cpu_tb.uut.regs.i_datab[4] top.cpu_tb.uut.regs.i_datab[3] top.cpu_tb.uut.regs.i_datab[2] top.cpu_tb.uut.regs.i_datab[1] top.cpu_tb.uut.regs.i_datab[0]
 #{top.cpu_tb.uut.regs.i_dataa[15:0]} top.cpu_tb.uut.regs.i_dataa[15] top.cpu_tb.uut.regs.i_dataa[14] top.cpu_tb.uut.regs.i_dataa[13] top.cpu_tb.uut.regs.i_dataa[12] top.cpu_tb.uut.regs.i_dataa[11] top.cpu_tb.uut.regs.i_dataa[10] top.cpu_tb.uut.regs.i_dataa[9] top.cpu_tb.uut.regs.i_dataa[8] top.cpu_tb.uut.regs.i_dataa[7] top.cpu_tb.uut.regs.i_dataa[6] top.cpu_tb.uut.regs.i_dataa[5] top.cpu_tb.uut.regs.i_dataa[4] top.cpu_tb.uut.regs.i_dataa[3] top.cpu_tb.uut.regs.i_dataa[2] top.cpu_tb.uut.regs.i_dataa[1] top.cpu_tb.uut.regs.i_dataa[0]
 #{top.cpu_tb.uut.regs.o_datad[15:0]} top.cpu_tb.uut.regs.o_datad[15] top.cpu_tb.uut.regs.o_datad[14] top.cpu_tb.uut.regs.o_datad[13] top.cpu_tb.uut.regs.o_datad[12] top.cpu_tb.uut.regs.o_datad[11] top.cpu_tb.uut.regs.o_datad[10] top.cpu_tb.uut.regs.o_datad[9] top.cpu_tb.uut.regs.o_datad[8] top.cpu_tb.uut.regs.o_datad[7] top.cpu_tb.uut.regs.o_datad[6] top.cpu_tb.uut.regs.o_datad[5] top.cpu_tb.uut.regs.o_datad[4] top.cpu_tb.uut.regs.o_datad[3] top.cpu_tb.uut.regs.o_datad[2] top.cpu_tb.uut.regs.o_datad[1] top.cpu_tb.uut.regs.o_datad[0]
@@ -47,5 +53,12 @@ top.cpu_tb.uut.out_ready
 #{top.cpu_tb.uut.out_data[15:0]} top.cpu_tb.uut.out_data[15] top.cpu_tb.uut.out_data[14] top.cpu_tb.uut.out_data[13] top.cpu_tb.uut.out_data[12] top.cpu_tb.uut.out_data[11] top.cpu_tb.uut.out_data[10] top.cpu_tb.uut.out_data[9] top.cpu_tb.uut.out_data[8] top.cpu_tb.uut.out_data[7] top.cpu_tb.uut.out_data[6] top.cpu_tb.uut.out_data[5] top.cpu_tb.uut.out_data[4] top.cpu_tb.uut.out_data[3] top.cpu_tb.uut.out_data[2] top.cpu_tb.uut.out_data[1] top.cpu_tb.uut.out_data[0]
 @200
 -
+@28
+top.cpu_tb.uut.alu_unit.enable
+#{top.cpu_tb.uut.alu_unit.opcode[2:0]} top.cpu_tb.uut.alu_unit.opcode[2] top.cpu_tb.uut.alu_unit.opcode[1] top.cpu_tb.uut.alu_unit.opcode[0]
+@22
+#{top.cpu_tb.uut.alu_unit.inputa[15:0]} top.cpu_tb.uut.alu_unit.inputa[15] top.cpu_tb.uut.alu_unit.inputa[14] top.cpu_tb.uut.alu_unit.inputa[13] top.cpu_tb.uut.alu_unit.inputa[12] top.cpu_tb.uut.alu_unit.inputa[11] top.cpu_tb.uut.alu_unit.inputa[10] top.cpu_tb.uut.alu_unit.inputa[9] top.cpu_tb.uut.alu_unit.inputa[8] top.cpu_tb.uut.alu_unit.inputa[7] top.cpu_tb.uut.alu_unit.inputa[6] top.cpu_tb.uut.alu_unit.inputa[5] top.cpu_tb.uut.alu_unit.inputa[4] top.cpu_tb.uut.alu_unit.inputa[3] top.cpu_tb.uut.alu_unit.inputa[2] top.cpu_tb.uut.alu_unit.inputa[1] top.cpu_tb.uut.alu_unit.inputa[0]
+#{top.cpu_tb.uut.alu_unit.inputb[15:0]} top.cpu_tb.uut.alu_unit.inputb[15] top.cpu_tb.uut.alu_unit.inputb[14] top.cpu_tb.uut.alu_unit.inputb[13] top.cpu_tb.uut.alu_unit.inputb[12] top.cpu_tb.uut.alu_unit.inputb[11] top.cpu_tb.uut.alu_unit.inputb[10] top.cpu_tb.uut.alu_unit.inputb[9] top.cpu_tb.uut.alu_unit.inputb[8] top.cpu_tb.uut.alu_unit.inputb[7] top.cpu_tb.uut.alu_unit.inputb[6] top.cpu_tb.uut.alu_unit.inputb[5] top.cpu_tb.uut.alu_unit.inputb[4] top.cpu_tb.uut.alu_unit.inputb[3] top.cpu_tb.uut.alu_unit.inputb[2] top.cpu_tb.uut.alu_unit.inputb[1] top.cpu_tb.uut.alu_unit.inputb[0]
+#{top.cpu_tb.uut.alu_unit.output[15:0]} top.cpu_tb.uut.alu_unit.output[15] top.cpu_tb.uut.alu_unit.output[14] top.cpu_tb.uut.alu_unit.output[13] top.cpu_tb.uut.alu_unit.output[12] top.cpu_tb.uut.alu_unit.output[11] top.cpu_tb.uut.alu_unit.output[10] top.cpu_tb.uut.alu_unit.output[9] top.cpu_tb.uut.alu_unit.output[8] top.cpu_tb.uut.alu_unit.output[7] top.cpu_tb.uut.alu_unit.output[6] top.cpu_tb.uut.alu_unit.output[5] top.cpu_tb.uut.alu_unit.output[4] top.cpu_tb.uut.alu_unit.output[3] top.cpu_tb.uut.alu_unit.output[2] top.cpu_tb.uut.alu_unit.output[1] top.cpu_tb.uut.alu_unit.output[0]
 [pattern_trace] 1
 [pattern_trace] 0
