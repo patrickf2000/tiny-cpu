@@ -5,7 +5,7 @@ entity CPU is
     port (
         clk : in std_logic;
         reset : in std_logic;
-        input : in std_logic_vector(112 downto 0);
+        input : in std_logic_vector(128 downto 0);
         ready : out std_logic;
         halt : out std_logic;
         out_ready : out std_logic;
@@ -16,7 +16,7 @@ end CPU;
 architecture Behavior of CPU is
 
     -- The size of memory
-    constant MEM_SIZE : integer := 112;
+    constant MEM_SIZE : integer := 128;
     
     -- Declare the control component
     component Control is
@@ -173,8 +173,15 @@ begin
                         reg_enable <= '0';
                         ready <= '0';
                         
+                        -- MV
+                        if opcode = "0011" then
+                            alu_dataA <= X"0000";
+                            alu_dataB <= O_dataB;
+                            alu_enable <= '1';
+                            I_enD <= '1';
+                            
                         -- LI
-                        if opcode = "0100" then
+                        elsif opcode = "0100" then
                             I_dataD(0) <= imm(0);
                             I_dataD(1) <= imm(1);
                             I_dataD(2) <= imm(2);
